@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 import Add from "./Add";
-import Button from 'react-bootstrap/Button';
-import moment from 'moment';
+import Button from "react-bootstrap/Button";
+import moment from "moment";
 
 function Dashboard(props) {
   const [events, cEvents] = useState([]);
@@ -24,21 +24,30 @@ function Dashboard(props) {
     refreshList();
   }, []);
 
-  
   const buildrows = () => {
-  
     return events.map((current) => {
       return (
         <tr key={current._id}>
-          <td>{current.name}</td>
-          <td>{current.location}</td>
-          <td>{current.description}</td>
+          <td>{current.rooms}</td>
+          <td>{current.areas}</td>
+          <td>{current.jobDescription}</td>
+          <td>{current.productsRequired}</td>
+          <td>{current.cost}</td>
+          <td>{current.date}</td>
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
-          <td>{moment(current.date).format('MMMM Do YYYY, h:mm:ss a')}</td>
+          <td>{moment(current.date).format("MMMM Do YYYY, h:mm:ss a")}</td>
           <td>
-            <Button onClick={() => removeEvent(current._id)} variant="danger">Remove</Button>
-            
-            <Button onClick={() => updateEvent(current)} type="button" variant="warning">Update</Button>
+            <Button onClick={() => removeEvent(current._id)} variant="danger">
+              Remove
+            </Button>
+
+            <Button
+              onClick={() => updateEvent(current)}
+              type="button"
+              variant="warning"
+            >
+              Update
+            </Button>
           </td>
         </tr>
       );
@@ -52,9 +61,11 @@ function Dashboard(props) {
       <Table className="mx-4" size="sm" responsive="md" fluid>
         <thead>
           <tr>
-            <th>Event</th>
-            <th>Location</th>
-            <th>Description</th>
+            <th>Rooms</th>
+            <th>Areas</th>
+            <th>Job Details</th>
+            <th>Products</th>
+            <th>Cost</th>
             <th>Date</th>
           </tr>
         </thead>
