@@ -55,57 +55,57 @@ function Add(props) {
       <Form className="mx-4" onSubmit={(e) => submitHandler(e)} id="addForm">
         <Row>
           <Col>
-            <Form.Group controlId="eventName">
+            <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
               <Form.Control
                 type="text"
                 defaultValue={props.currentEvent?.rooms}
                 disabled={disabled}
-                required
+                
               />
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="location">
+            <Form.Group controlId="areas">
               <Form.Label>Areas</Form.Label>
               <Form.Control
                 type="text"
                 defaultValue={props.currentEvent?.areas}
                 disabled={disabled}
-                required
+                
               />
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="location">
+            <Form.Group controlId="jobDescription">
               <Form.Label>Job Description</Form.Label>
               <Form.Control
                 type="text"
                 defaultValue={props.currentEvent?.jobDescription}
                 disabled={disabled}
-                required
+                
               />
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="location">
+            <Form.Group controlId="productsRequired">
               <Form.Label>Products Required</Form.Label>
               <Form.Control
                 type="text"
                 defaultValue={props.currentEvent?.productsRequired}
                 disabled={disabled}
-                required
+                
               />
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="location">
+            <Form.Group controlId="cost">
               <Form.Label>Cost</Form.Label>
               <Form.Control
                 type="text"
                 defaultValue={props.currentEvent?.cost}
                 disabled={disabled}
-                required
+                
               />
             </Form.Group>
           </Col>
@@ -119,22 +119,11 @@ function Add(props) {
                 type="datetime-local"
                 defaultValue={props.currentEvent?.date}
                 disabled={disabled}
-                required
+                
               />
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group controlId="description">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                defaultValue={props.currentEvent?.description}
-                disabled={disabled}
-                required
-              />
-            </Form.Group>
-          </Col>
+         
         </Row>
         <Button variant="warning" type="submit" disabled={disabled}>
           {" "}
