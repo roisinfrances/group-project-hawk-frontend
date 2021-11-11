@@ -3,6 +3,7 @@ import { Button, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "toastr/build/toastr.min.css";
 import toastr from "toastr";
+import Multiselect from 'multiselect-react-dropdown';
 
 function Add(props) {
   const [disabled, cDisabled] = useState(false);
@@ -12,9 +13,9 @@ function Add(props) {
     e.preventDefault();
     cDisabled(true);
     let result;
-    if (props.currentEvent) {
-      result = props.client.updateEvent(
-        props.currentEvent._id,
+    if (props.currentQuote) {
+      result = props.client.updateQuote(
+        props.currentQuote._id,
         e.target.rooms.value,
         e.target.areas.value,
         e.target.jobDescription.value,
@@ -23,7 +24,7 @@ function Add(props) {
         e.target.date.value
       );
     } else {
-      result = props.client.addEvent(
+      result = props.client.addQuote(
         e.target.rooms.value,
         e.target.areas.value,
         e.target.jobDescription.value,
@@ -37,8 +38,8 @@ function Add(props) {
         cDisabled(false);
         document.getElementById("addForm").reset();
         toastr.success(
-          "You can now view the event on the Dashboard",
-          "Event added!"
+          "You can now view the quote on the Dashboard",
+          "Quote added!"
         );
         props.refreshList();
       })
@@ -50,18 +51,19 @@ function Add(props) {
 
   return (
     <>
-      {props.currentEvent ? "Update" : "Add"}
+      {props.currentQuote ? "Update" : "Add"}
       <br />
       <Form className="mx-4" onSubmit={(e) => submitHandler(e)} id="addForm">
         <Row>
           <Col>
             <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
-              <Form.Control
+              <Multiselect
                 type="text"
-                defaultValue={props.currentEvent?.rooms}
+                options={['bedroom','bathroom']}
+                defaultValue={props.currentQuote?.rooms}
                 disabled={disabled}
-                
+                required
               />
             </Form.Group>
           </Col>
@@ -70,20 +72,22 @@ function Add(props) {
               <Form.Label>Areas</Form.Label>
               <Form.Control
                 type="text"
-                defaultValue={props.currentEvent?.areas}
+                defaultValue={props.currentQuote?.areas}
                 disabled={disabled}
-                
+                required
               />
             </Form.Group>
           </Col>
+          </Row>
+          <Row>
           <Col>
             <Form.Group controlId="jobDescription">
               <Form.Label>Job Description</Form.Label>
               <Form.Control
                 type="text"
-                defaultValue={props.currentEvent?.jobDescription}
+                defaultValue={props.currentQuote?.jobDescription}
                 disabled={disabled}
-                
+                required
               />
             </Form.Group>
           </Col>
@@ -92,38 +96,36 @@ function Add(props) {
               <Form.Label>Products Required</Form.Label>
               <Form.Control
                 type="text"
-                defaultValue={props.currentEvent?.productsRequired}
+                defaultValue={props.currentQuote?.productsRequired}
                 disabled={disabled}
-                
+                required
               />
             </Form.Group>
           </Col>
+          </Row>
+          <Row>
           <Col>
             <Form.Group controlId="cost">
               <Form.Label>Cost</Form.Label>
               <Form.Control
                 type="text"
-                defaultValue={props.currentEvent?.cost}
+                defaultValue={props.currentQuote?.cost}
                 disabled={disabled}
-                
+                required
               />
             </Form.Group>
           </Col>
-        </Row>
-
-        <Row>
           <Col>
             <Form.Group controlId="date">
               <Form.Label>Date and time</Form.Label>
               <Form.Control
                 type="datetime-local"
-                defaultValue={props.currentEvent?.date}
+                defaultValue={props.currentQuote?.date}
                 disabled={disabled}
-                
+                required
               />
             </Form.Group>
           </Col>
-         
         </Row>
         <Button variant="warning" type="submit" disabled={disabled}>
           {" "}

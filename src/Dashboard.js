@@ -5,19 +5,19 @@ import Button from "react-bootstrap/Button";
 import moment from "moment";
 
 function Dashboard(props) {
-  const [events, cEvents] = useState([]);
+  const [quotes, cQuotes] = useState([]);
   const [current, cCurrent] = useState(undefined);
 
   const refreshList = () => {
-    props.client.getEvents().then((response) => cEvents(response.data));
+    props.client.getQuotes().then((response) => cQuotes(response.data));
   };
 
-  const removeEvent = (id) => {
-    props.client.removeEvent(id).then(() => refreshList());
+  const removeQuote = (id) => {
+    props.client.removeQuote(id).then(() => refreshList());
   };
 
-  const updateEvent = (event) => {
-    cCurrent(event);
+  const updateQuote = (quote) => {
+    cCurrent(quote);
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function Dashboard(props) {
   }, []);
 
   const buildrows = () => {
-    return events.map((current) => {
+    return quotes.map((current) => {
       return (
         <tr key={current._id}>
           <td>{current.rooms}</td>
@@ -37,12 +37,12 @@ function Dashboard(props) {
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
           <td>{moment(current.date).format("MMMM Do YYYY, h:mm:ss a")}</td>
           <td>
-            <Button onClick={() => removeEvent(current._id)} variant="danger">
+            <Button onClick={() => removeQuote(current._id)} variant="danger">
               Remove
             </Button>
 
             <Button
-              onClick={() => updateEvent(current)}
+              onClick={() => updateQuote(current)}
               type="button"
               variant="warning"
             >
@@ -79,7 +79,7 @@ function Dashboard(props) {
           refreshList();
           cCurrent(undefined);
         }}
-        currentEvent={current}
+        currentQuote={current}
       />
     </>
   );

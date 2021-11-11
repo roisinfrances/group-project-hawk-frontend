@@ -42,11 +42,11 @@ export class ApiClient {
     });
   }
 
-  getEvents() {
+  getQuotes() {
     return this.authenticatedCall("get", url);
   }
 
-  addEvent(rooms, areas, jobDescription, productsRequired, cost, date) {
+  addQuote(rooms, areas, jobDescription, productsRequired, cost, date) {
     return this.authenticatedCall("post", url, {
       rooms,
       areas,
@@ -57,11 +57,11 @@ export class ApiClient {
     });
   }
 
-  removeEvent(id) {
+  removeQuote(id) {
     return this.authenticatedCall("delete", `${url}${id}`);
   }
 
-  updateEvent(id, rooms, areas, jobDescription, productsRequired, cost, date) {
+  updateQuote(id, rooms, areas, jobDescription, productsRequired, cost, date) {
     return this.authenticatedCall("put", `${url}${id}`, {
       rooms,
       areas,
