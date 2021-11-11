@@ -39,11 +39,15 @@ function Dashboard(props) {
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
           <td>{moment(current.date).format("MMMM Do YYYY, h:mm a")}</td>
           <td>
-            <Button onClick={() => removeQuote(current._id)} variant="danger">
+            <Button 
+            className="mx-1" 
+            onClick={() => removeQuote(current._id)} 
+            variant="danger">
               Remove
             </Button>
 
             <Button
+            className="mx-1"
               onClick={() => updateQuote(current)}
               type="button"
               variant="warning"
