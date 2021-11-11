@@ -54,11 +54,11 @@ function Add(props) {
       {props.currentQuote ? "Update" : "Add"}
       <br />
       <Form className="mx-4" onSubmit={(e) => submitHandler(e)} id="addForm">
-        <Row>
+        <Row sm={4}>
           <Col>
             <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
-              <Multiselect
+              <Multiselect 
                 displayValue="key"
                 onRemove={function noRefCheck() {}}
                 onSearch={function noRefCheck() {}}
@@ -98,10 +98,11 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
+        <Row sm={4}>
         <Col>
-          <Form.Group controlId="areas">
+          <Form.Group controlId="areas" >
             <Form.Label>Areas</Form.Label>
-            <Form.Control
+            <Form.Control 
               type="text"
               defaultValue={props.currentQuote?.areas}
               disabled={disabled}
@@ -109,8 +110,9 @@ function Add(props) {
             />
           </Form.Group>
         </Col>
+        </Row>
 
-        <Row>
+        <Row sm={4}>
           <Col>
             <Form.Group controlId="jobDescription">
               <Form.Label>Job Description</Form.Label>
@@ -123,7 +125,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
-        <Row>
+        <Row sm={4}>
           <Col>
             <Form.Group controlId="productsRequired">
               <Form.Label>Products Required</Form.Label>
@@ -136,7 +138,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
-        <Row>
+        <Row sm={4}>
           <Col>
             <Form.Group controlId="cost">
               <Form.Label>Cost</Form.Label>
@@ -149,7 +151,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
-        <Row>
+        <Row sm={4}>
           <Col>
             <Form.Group controlId="date">
               <Form.Label>Date and time</Form.Label>
