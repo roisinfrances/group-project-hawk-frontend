@@ -52,7 +52,7 @@ function Add(props) {
   return (
     <>
       <div className="add">
-        {props.currentQuote ? "Update selected job" : "Add new job"}
+        {props.currentQuote ? "Update Selected Job" : "Add New Job"}
       </div>
       <br />
       <Form className="mx-4" onSubmit={(e) => submitHandler(e)} id="addForm">

@@ -37,7 +37,7 @@ function Dashboard(props) {
           <td>{current.cost}</td>
 
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
-          <td>{moment(current.date).format("MMMM Do YYYY, h:mm:ss a")}</td>
+          <td>{moment(current.date).format("MMMM Do YYYY, h:mm a")}</td>
           <td>
             <Button onClick={() => removeQuote(current._id)} variant="danger">
               Remove
