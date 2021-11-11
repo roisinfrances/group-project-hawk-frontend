@@ -51,14 +51,16 @@ function Add(props) {
 
   return (
     <>
-      {props.currentQuote ? "Update" : "Add"}
+      <div className="add">
+        {props.currentQuote ? "Update selected job" : "Add new job"}
+      </div>
       <br />
       <Form className="mx-4" onSubmit={(e) => submitHandler(e)} id="addForm">
         <Row sm={4}>
           <Col>
             <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
-              <Multiselect 
+              <Multiselect
                 displayValue="key"
                 onRemove={function noRefCheck() {}}
                 onSearch={function noRefCheck() {}}
@@ -99,17 +101,17 @@ function Add(props) {
           </Col>
         </Row>
         <Row sm={4}>
-        <Col>
-          <Form.Group controlId="areas" >
-            <Form.Label>Areas</Form.Label>
-            <Form.Control 
-              type="text"
-              defaultValue={props.currentQuote?.areas}
-              disabled={disabled}
-              required
-            />
-          </Form.Group>
-        </Col>
+          <Col>
+            <Form.Group controlId="areas">
+              <Form.Label>Areas</Form.Label>
+              <Form.Control
+                type="text"
+                defaultValue={props.currentQuote?.areas}
+                disabled={disabled}
+                required
+              />
+            </Form.Group>
+          </Col>
         </Row>
 
         <Row sm={4}>

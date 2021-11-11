@@ -33,7 +33,7 @@ function Dashboard(props) {
           <td>{current.jobDescription}</td>
           <td>{current.productsRequired}</td>
           <td>{current.cost}</td>
-         
+
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
           <td>{moment(current.date).format("MMMM Do YYYY, h:mm:ss a")}</td>
           <td>
@@ -56,7 +56,6 @@ function Dashboard(props) {
 
   return (
     <>
-      Dashboard
       <br />
       <Table className="mx-4" size="sm" responsive="md" fluid>
         <thead>

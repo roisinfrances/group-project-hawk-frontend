@@ -10,3 +10,12 @@
 .toast-title {
   background-color: #51a351;
 }
+
+.add {
+  padding-left: 25px;
+}
+
+.login {
+  padding-left: 25px;
+  padding-top: 25px;
+}
