@@ -3,7 +3,7 @@ import { Button, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "toastr/build/toastr.min.css";
 import toastr from "toastr";
-import Multiselect from 'multiselect-react-dropdown';
+import Multiselect from "multiselect-react-dropdown";
 
 function Add(props) {
   const [disabled, cDisabled] = useState(false);
@@ -59,11 +59,41 @@ function Add(props) {
             <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
               <Multiselect
-                type="text"
-                options={['bedroom','bathroom']}
-                defaultValue={props.currentQuote?.rooms}
-                disabled={disabled}
-                required
+                displayValue="key"
+                onRemove={function noRefCheck() {}}
+                onSearch={function noRefCheck() {}}
+                onSelect={function noRefCheck() {}}
+                options={[
+                  {
+                    cat: "Group 1",
+                    key: "Option 1",
+                  },
+                  {
+                    cat: "Group 1",
+                    key: "Option 2",
+                  },
+                  {
+                    cat: "Group 1",
+                    key: "Option 3",
+                  },
+                  {
+                    cat: "Group 2",
+                    key: "Option 4",
+                  },
+                  {
+                    cat: "Group 2",
+                    key: "Option 5",
+                  },
+                  {
+                    cat: "Group 2",
+                    key: "Option 6",
+                  },
+                  {
+                    cat: "Group 2",
+                    key: "Option 7",
+                  },
+                ]}
+                showCheckbox
               />
             </Form.Group>
           </Col>
@@ -78,8 +108,8 @@ function Add(props) {
               />
             </Form.Group>
           </Col>
-          </Row>
-          <Row>
+        </Row>
+        <Row>
           <Col>
             <Form.Group controlId="jobDescription">
               <Form.Label>Job Description</Form.Label>
@@ -102,8 +132,8 @@ function Add(props) {
               />
             </Form.Group>
           </Col>
-          </Row>
-          <Row>
+        </Row>
+        <Row>
           <Col>
             <Form.Group controlId="cost">
               <Form.Label>Cost</Form.Label>
