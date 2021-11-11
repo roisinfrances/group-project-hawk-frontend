@@ -97,18 +97,19 @@ function Add(props) {
               />
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group controlId="areas">
-              <Form.Label>Areas</Form.Label>
-              <Form.Control
-                type="text"
-                defaultValue={props.currentQuote?.areas}
-                disabled={disabled}
-                required
-              />
-            </Form.Group>
-          </Col>
         </Row>
+        <Col>
+          <Form.Group controlId="areas">
+            <Form.Label>Areas</Form.Label>
+            <Form.Control
+              type="text"
+              defaultValue={props.currentQuote?.areas}
+              disabled={disabled}
+              required
+            />
+          </Form.Group>
+        </Col>
+
         <Row>
           <Col>
             <Form.Group controlId="jobDescription">
@@ -121,6 +122,8 @@ function Add(props) {
               />
             </Form.Group>
           </Col>
+        </Row>
+        <Row>
           <Col>
             <Form.Group controlId="productsRequired">
               <Form.Label>Products Required</Form.Label>
@@ -145,6 +148,8 @@ function Add(props) {
               />
             </Form.Group>
           </Col>
+        </Row>
+        <Row>
           <Col>
             <Form.Group controlId="date">
               <Form.Label>Date and time</Form.Label>
@@ -157,6 +162,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
+        <br />
         <Button variant="warning" type="submit" disabled={disabled}>
           {" "}
           Submit{" "}
