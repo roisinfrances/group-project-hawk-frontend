@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
+//import Table from "react-bootstrap/Table";
 import Add from "./Add";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 function Dashboard(props) {
   const [quotes, cQuotes] = useState([]);
