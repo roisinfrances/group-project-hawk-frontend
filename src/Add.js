@@ -7,6 +7,7 @@ import Multiselect from "multiselect-react-dropdown";
 
 function Add(props) {
   const [disabled, cDisabled] = useState(false);
+  const [selected, setSelected] = useState([]);
 
   const submitHandler = (e) => {
     console.log("submit handler");
@@ -24,14 +25,15 @@ function Add(props) {
         e.target.date.value
       );
     } else {
-      result = props.client.addQuote(
-        e.target.rooms.value,
+    
+     result = props.client.addQuote(
+        selected,
         e.target.areas.value,
         e.target.jobDescription.value,
         e.target.productsRequired.value,
         e.target.cost.value,
         e.target.date.value
-      );
+      ); 
     }
     result
       .then(() => {
@@ -61,6 +63,7 @@ function Add(props) {
             <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
               <Multiselect
+              onChange={setSelected}
                 displayValue="key"
                 onRemove={function noRefCheck() {}}
                 onSearch={function noRefCheck() {}}
