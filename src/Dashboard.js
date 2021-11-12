@@ -57,6 +57,9 @@ function Dashboard(props) {
             >
               Update
             </Button>
+            <Button className="mx-1" variant="success">
+              Job Started
+            </Button>
           </td>
         </tr>
       );
