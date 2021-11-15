@@ -131,7 +131,7 @@ function Add(props) {
             <Form.Group controlId="cost">
               <Form.Label>Cost</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 defaultValue={props.currentQuote?.cost}
                 disabled={disabled}
                 required
