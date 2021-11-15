@@ -59,9 +59,17 @@ function Add(props) {
   };
 
   const options = [
-    { label: "Kitchen", value: "kitchen" },
-    { label: "Bathroom", value: "bathroom" },
-    { label: "Living Room", value: "living room" },
+    { label: "Kitchen", value: "Kitchen " },
+    { label: "Bathroom", value: "Bathroom " },
+    { label: "Bedroom", value: "Bedroom " },
+    { label: "Living Room", value: "Living room " },
+    { label: "Hallway", value: "Hallway " },
+    { label: "Dining Room", value: "Dining room " },
+    { label: "Cellar ", value: "Cellar " },
+
+
+
+
   ];
 
   return (
