@@ -14,10 +14,15 @@ function Add(props) {
     e.preventDefault();
     cDisabled(true);
     let result;
+    let rooms = [];
+    selected.map((item) => {
+      rooms.push(item.value);
+    });
     if (props.currentQuote) {
+      console.log("update called");
       result = props.client.updateQuote(
         props.currentQuote._id,
-        e.target.rooms.value,
+        rooms,
         e.target.areas.value,
         e.target.jobDescription.value,
         e.target.productsRequired.value,
@@ -25,9 +30,10 @@ function Add(props) {
         e.target.date.value
       );
     } else {
+      console.log("add called");
+
       result = props.client.addQuote(
-        selected[0].value,
-        console.log(selected[0].value),
+        rooms,
         e.target.areas.value,
         e.target.jobDescription.value,
         e.target.productsRequired.value,
@@ -35,6 +41,7 @@ function Add(props) {
         e.target.date.value
       );
     }
+
     result
       .then(() => {
         cDisabled(false);

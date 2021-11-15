@@ -8,6 +8,7 @@ export class ApiClient {
   }
 
   authenticatedCall(method, url, data) {
+    console.log(data);
     return axios({
       method,
       url,
@@ -47,6 +48,7 @@ export class ApiClient {
   }
 
   addQuote(rooms, areas, jobDescription, productsRequired, cost, date) {
+    console.log("Add quote api called");
     return this.authenticatedCall("post", url, {
       rooms,
       areas,
