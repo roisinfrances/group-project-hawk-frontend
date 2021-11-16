@@ -8,6 +8,8 @@ import { MultiSelect } from "react-multi-select-component";
 function Add(props) {
   const [disabled, cDisabled] = useState(false);
   const [selected, setSelected] = useState([]);
+  const [selected2, setSelected2] = useState([]);
+  const [selected3, setSelected3] = useState([]);
 
   const submitHandler = (e) => {
     console.log("submit handler");
@@ -18,14 +20,22 @@ function Add(props) {
     selected.map((item) => {
       rooms.push(item.value);
     });
+    let areas = [];
+    selected2.map((item) => {
+      areas.push(item.value);
+    });
+    let products = [];
+    selected3.map((item) => {
+      products.push(item.value);
+    });
     if (props.currentQuote) {
       console.log("update called");
       result = props.client.updateQuote(
         props.currentQuote._id,
         rooms,
-        e.target.areas.value,
+        areas,
         e.target.jobDescription.value,
-        e.target.productsRequired.value,
+        products,
         e.target.cost.value,
         e.target.date.value
       );
@@ -34,9 +44,9 @@ function Add(props) {
 
       result = props.client.addQuote(
         rooms,
-        e.target.areas.value,
+        areas,
         e.target.jobDescription.value,
-        e.target.productsRequired.value,
+        products,
         e.target.cost.value,
         e.target.date.value
       );
@@ -66,10 +76,22 @@ function Add(props) {
     { label: "Hallway", value: "Hallway " },
     { label: "Dining Room", value: "Dining room " },
     { label: "Cellar ", value: "Cellar " },
+  ];
 
+  const options2 = [
+    { label: "Ceiling", value: "Ceiling " },
+    { label: "Walls", value: "Walls " },
+    { label: "Doors", value: "Doors " },
+    { label: "Stairs", value: "Stairs " },
+    { label: "Floors", value: "Floors " }
+  ];
 
-
-
+  const options3 = [
+    { label: "Brush", value: "Brush " },
+    { label: "Paint", value: "Paint " },
+    { label: "Paint Roller", value: "Paint Roller " },
+    { label: "Plaster", value: "Plaster " },
+    { label: "Varnish", value: "Varnish " }
   ];
 
   return (
@@ -98,12 +120,14 @@ function Add(props) {
           <Col>
             <Form.Group controlId="areas">
               <Form.Label>Areas</Form.Label>
-              <Form.Control
-                type="text"
-                defaultValue={props.currentQuote?.areas}
-                disabled={disabled}
-                required
-              />
+              <div>
+                <MultiSelect
+                  options={options2}
+                  value={selected2}
+                  onChange={setSelected2}
+                  labelledBy="Select"
+                />
+              </div>
             </Form.Group>
           </Col>
         </Row>
@@ -125,12 +149,14 @@ function Add(props) {
           <Col>
             <Form.Group controlId="productsRequired">
               <Form.Label>Products Required</Form.Label>
-              <Form.Control
-                type="text"
-                defaultValue={props.currentQuote?.productsRequired}
-                disabled={disabled}
-                required
-              />
+              <div>
+                <MultiSelect
+                  options={options3}
+                  value={selected3}
+                  onChange={setSelected3}
+                  labelledBy="Select"
+                />
+              </div>
             </Form.Group>
           </Col>
         </Row>
