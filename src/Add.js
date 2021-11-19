@@ -80,7 +80,8 @@ function Add(props) {
 
   const options2 = [
     { label: "Ceiling", value: "Ceiling " },
-    { label: "Walls", value: "Walls " },
+    { label: "Interior walls", value: "Interior walls " },
+    { label: "Exterior walls", value: "Exterior walls " },
     { label: "Doors", value: "Doors " },
     { label: "Stairs", value: "Stairs " },
     { label: "Floors", value: "Floors " }
@@ -88,10 +89,19 @@ function Add(props) {
 
   const options3 = [
     { label: "Brush", value: "Brush " },
-    { label: "Paint", value: "Paint " },
+    { label: "Interior paint", value: "Interior paint " },
+    { label: "Exterior paint", value: "Exterior paint " },
     { label: "Paint Roller", value: "Paint Roller " },
     { label: "Plaster", value: "Plaster " },
-    { label: "Varnish", value: "Varnish " }
+    { label: "Wood", value: "Wood " },
+    { label: "Paint thinner", value: "Paint thinner " },
+    { label: "Filler", value: "Filler " },
+    { label: "Varnish", value: "Varnish " },
+    { label: "Wallpaper", value: "Wallpaper  " },
+    { label: "Wallpaper paste", value: "Wallpaper paste " },
+
+
+
   ];
 
   return (
