@@ -76,7 +76,7 @@ function Dashboard(props) {
         className="mb-3"
       >
         <Tab eventKey="quotes" title="Quotes">
-          <Table className="mx-4" size="sm" responsive="md" fluid>
+          <Table size="sm" responsive="md" fluid>
             <thead>
               <tr>
                 <th>Rooms</th>
