@@ -71,7 +71,7 @@ function Dashboard(props) {
       <br />
 
       <Tabs
-        defaultActiveKey="profile"
+        defaultActiveKey="quotes"
         id="uncontrolled-tab-example"
         className="mb-3"
       >
@@ -94,15 +94,17 @@ function Dashboard(props) {
         </Tab>
         <Tab eventKey="inProgress" title="Jobs In Progress"></Tab>
         <Tab eventKey="completed" title="Completed Jobs"></Tab>
+        <Tab eventKey="add" title="New Quote">
+        <Add
+          client={props.client}
+          refreshList={() => {
+            refreshList();
+            cCurrent(undefined);
+          }}
+          currentQuote={current}
+        />
+        </Tab>
       </Tabs>
-      <Add
-        client={props.client}
-        refreshList={() => {
-          refreshList();
-          cCurrent(undefined);
-        }}
-        currentQuote={current}
-      />
     </>
   );
 }
