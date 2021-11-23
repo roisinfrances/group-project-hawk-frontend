@@ -111,7 +111,7 @@ function Add(props) {
       </div>
       <br />
       <Form className="mx-4" onSubmit={(e) => submitHandler(e)} id="addForm">
-        <Row sm={4}>
+        <Row sm={2}>
           <Col>
             <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
@@ -126,7 +126,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
-        <Row sm={4}>
+        <Row sm={2}>
           <Col>
             <Form.Group controlId="areas">
               <Form.Label>Areas</Form.Label>
@@ -142,7 +142,7 @@ function Add(props) {
           </Col>
         </Row>
 
-        <Row sm={4}>
+        <Row sm={2}>
           <Col>
             <Form.Group controlId="jobDescription">
               <Form.Label>Job Description</Form.Label>
@@ -155,7 +155,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
-        <Row sm={4}>
+        <Row sm={2}>
           <Col>
             <Form.Group controlId="productsRequired">
               <Form.Label>Products Required</Form.Label>
@@ -170,7 +170,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
-        <Row sm={4}>
+        <Row sm={2}>
           <Col>
             <Form.Group controlId="cost">
               <Form.Label>Cost</Form.Label>
@@ -183,7 +183,7 @@ function Add(props) {
             </Form.Group>
           </Col>
         </Row>
-        <Row sm={4}>
+        <Row sm={2}>
           <Col>
             <Form.Group controlId="date">
               <Form.Label>Date and time</Form.Label>
