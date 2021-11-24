@@ -94,6 +94,15 @@ function Dashboard(props) {
         </Tab>
         <Tab eventKey="inProgress" title="Jobs In Progress"></Tab>
         <Tab eventKey="completed" title="Completed Jobs"></Tab>
+
+        {props.role == "admin" && 
+        
+          <Tab eventKey="adminOnly" title="Admin Only">
+            <h2>For Admins Only</h2>
+          </Tab>
+        
+        }
+
         <Tab eventKey="add" title="New Quote">
         <Add
           client={props.client}

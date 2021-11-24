@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard";
 import { ApiClient } from "./apiClient";
 import Login from "./Login";
 import {Button, Row} from 'react-bootstrap';
+import { findAllByRole } from "@testing-library/dom";
 
 function App() {
   const [token,changeToken] = useState(window.localStorage.getItem("token"));
@@ -33,7 +34,7 @@ function App() {
     <>
       {token ? (
         <div class="p-4">
-        <Dashboard client={client} />
+        <Dashboard client={client} role={role} />
         <br></br>
         <Row>
           <Button  variant="secondary" onClick={logout} size="sm">
