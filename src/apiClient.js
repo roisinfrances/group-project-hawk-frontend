@@ -2,27 +2,27 @@ import axios from "axios";
 const url = "http://localhost:3001/";
 
 export class ApiClient {
-  constructor(tokenProvider,logoutHandler){
+  constructor(tokenProvider, logoutHandler) {
     this.tokenProvider = tokenProvider;
     this.logoutHandler = logoutHandler;
   }
 
-
-  authenticatedCall(method,url,data){
+  authenticatedCall(method, url, data) {
+    console.log(data);
     return axios({
       method,
       url,
       headers: {
-        authorization: this.tokenProvider
+        authorization: this.tokenProvider,
       },
       data,
     }).catch((error) => {
-      if(error.response.status === 403) {
+      if (error.response.status === 403) {
         this.logoutHandler();
-        return Promise.reject()
+        return Promise.reject();
       } else {
-      throw error;
-    }
+        throw error;
+      }
     });
   }
 
@@ -36,23 +36,41 @@ export class ApiClient {
     });
   }
 
-  login(username,password) {
-    return this.apiCall("post",url + "auth/",{username: username, password:password});
+  login(username, password) {
+    return this.apiCall("post", url + "auth/", {
+      username: username,
+      password: password,
+    });
   }
 
-  getEvents() {
+  getQuotes() {
     return this.authenticatedCall("get", url);
   }
 
-  addEvent(name, location, description, date) {
-    return this.authenticatedCall("post", url, { name, location, description, date });
+  addQuote(rooms, areas, jobDescription, productsRequired, cost, date) {
+    console.log("Add quote api called");
+    return this.authenticatedCall("post", url, {
+      rooms,
+      areas,
+      jobDescription,
+      productsRequired,
+      cost,
+      date,
+    });
   }
 
-  removeEvent(id) {
+  removeQuote(id) {
     return this.authenticatedCall("delete", `${url}${id}`);
   }
 
-  updateEvent(id, name, location, description, date) {
-    return this.authenticatedCall("put", `${url}${id}`, { name, location, description, date});
+  updateQuote(id, rooms, areas, jobDescription, productsRequired, cost, date) {
+    return this.authenticatedCall("put", `${url}${id}`, {
+      rooms,
+      areas,
+      jobDescription,
+      productsRequired,
+      cost,
+      date,
+    });
   }
 }

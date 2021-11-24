@@ -1,14 +1,21 @@
 * {
-  
   background-color: #202020;
-  color:white;
+  color: white;
 }
 
 .toast-message {
   background-color: #51a351;
-  
-} 
+}
 
 .toast-title {
   background-color: #51a351;
+}
+
+.add {
+  padding-left: 25px;
+}
+
+.login {
+  padding-left: 25px;
+  padding-top: 25px;
 }
