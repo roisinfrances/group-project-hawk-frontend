@@ -99,6 +99,9 @@ function Dashboard(props) {
         
           <Tab eventKey="adminOnly" title="Admin Only">
             <h2>For Admins Only</h2>
+            <Button variant="info" href="https://docs.google.com/spreadsheets/d/1Xxx_pVpF_1i3KNPnpoy1MM4oN5x-L9kaj3QaTbF0lQo/edit?usp=sharing" target="_blank">
+              Price Estimation
+              </Button>
           </Tab>
         
         }
