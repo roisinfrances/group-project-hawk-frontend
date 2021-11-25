@@ -24,6 +24,10 @@ function Dashboard(props) {
     cCurrent(quote);
   };
 
+  const addJob = () => {
+    
+  };
+
   useEffect(() => {
     refreshList();
   }, []);
@@ -57,7 +61,7 @@ function Dashboard(props) {
             >
               Update
             </Button>
-            <Button className="mx-1" variant="success">
+            <Button className="mx-1" variant="success" onClick={() => addJob()}>
               Job Started
             </Button>
           </td>
