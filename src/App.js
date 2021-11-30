@@ -5,6 +5,7 @@ import { ApiClient } from "./apiClient";
 import Login from "./Login";
 import {Button, Row} from 'react-bootstrap';
 import { findAllByRole } from "@testing-library/dom";
+import Header from "./Header";
 
 function App() {
   const [token,changeToken] = useState(window.localStorage.getItem("token"));
@@ -34,13 +35,8 @@ function App() {
     <>
       {token ? (
         <div class="p-4">
+        <Header role={role} logoutFunction={logout} />
         <Dashboard client={client} role={role} />
-        <br></br>
-        <Row>
-          <Button  variant="secondary" onClick={logout} size="sm">
-            Log Out
-          </Button>
-        </Row>
         </div>
       ) : (
         <Login loggedIn={(token) => login(token)} client={client} />
