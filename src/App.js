@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from "./Dashboard";
 import { ApiClient } from "./apiClient";
 import Login from "./Login";
-import {Button, Row} from 'react-bootstrap';
-import { findAllByRole } from "@testing-library/dom";
 import Header from "./Header";
 
 function App() {

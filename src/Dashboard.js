@@ -24,27 +24,33 @@ function Dashboard(props) {
     cCurrent(quote);
   };
 
-  const addJob = () => {
-    
+  const addJob = (current) => {
+    console.log(current)
+    props.client.startJob(current._id).then(() => refreshList());
   };
 
   useEffect(() => {
     refreshList();
   }, []);
 
-  const buildrows = () => {
-    return quotes.map((current) => {
+  const inProgressJobs = quotes.filter(q => q.started && q.completed == undefined);
+  const completedJobs = quotes.filter(q => q.started && q.completed);
+
+  const buildrows = (jobs) => {
+    return jobs.map((current) => {
       return (
-        <tr key={current._id}>
-          <td>{current.rooms}</td>
-          <td>{current.areas}</td>
-          <td>{current.jobDescription}</td>
-          <td>{current.productsRequired}</td>
-          <td>£{current.cost}</td>
+        <Tr key={current._id}>
+          <Td>{current.rooms}</Td>
+          <Td>{current.areas}</Td>
+          <Td>{current.jobDescription}</Td>
+          <Td>{current.productsRequired}</Td>
+          <Td>£{current.cost}</Td>
+          <Td>{current.started}</Td>
+          <Td>{current.completed}</Td>
 
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
-          <td>{moment(current.date).format("MMMM Do YYYY, h:mm a")}</td>
-          <td>
+          <Td>{moment(current.date).format("MMMM Do YYYY, h:mm a")}</Td>
+          <Td>
             <Button
               className="mx-1"
               onClick={() => removeQuote(current._id)}
@@ -61,11 +67,11 @@ function Dashboard(props) {
             >
               Update
             </Button>
-            <Button className="mx-1" variant="success" onClick={() => addJob()}>
-              Job Started
+            <Button className="mx-1" variant="success" onClick={() => addJob(current)}>
+              Start Job
             </Button>
-          </td>
-        </tr>
+          </Td>
+        </Tr>
       );
     });
   };
@@ -81,44 +87,78 @@ function Dashboard(props) {
       >
         <Tab eventKey="quotes" title="Quotes">
           <Table size="sm" responsive="md" fluid>
-            <thead>
-              <tr>
-                <th>Rooms</th>
-                <th>Areas</th>
-                <th>Job Details</th>
-                <th>Products</th>
-                <th>Cost</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>{buildrows()}</tbody>
+            <Thead>
+              <Tr>
+                <Th>Rooms</Th>
+                <Th>Areas</Th>
+                <Th>Job Details</Th>
+                <Th>Products</Th>
+                <Th>Cost</Th>
+                <Th>Started</Th>
+                <Th>Completed</Th>
+                <Th>Date</Th>
+              </Tr>
+            </Thead>
+            <Tbody>{buildrows(quotes)}</Tbody>
           </Table>
           <br />
           <br />
         </Tab>
-        <Tab eventKey="inProgress" title="Jobs In Progress"></Tab>
-        <Tab eventKey="completed" title="Completed Jobs"></Tab>
+        <Tab eventKey="inProgress" title="Jobs In Progress">
+          <Table size="sm" responsive="md" fluid>
+            <Thead>
+              <Tr>
+                <Th>Rooms</Th>
+                <Th>Areas</Th>
+                <Th>Job Details</Th>
+                <Th>Products</Th>
+                <Th>Cost</Th>
+                <Th>Started</Th>
+                <Th>Completed</Th>
+                <Th>Date</Th>
+              </Tr>
+            </Thead>
+            <Tbody>{buildrows(inProgressJobs)}</Tbody>
+          </Table>
+        </Tab>
+        <Tab eventKey="completed" title="Completed Jobs">
+          <Table size="sm" responsive="md" fluid>
+            <Thead>
+              <Tr>
+                <Th>Rooms</Th>
+                <Th>Areas</Th>
+                <Th>Job Details</Th>
+                <Th>Products</Th>
+                <Th>Cost</Th>
+                <Th>Started</Th>
+                <Th>Completed</Th>
+                <Th>Date</Th>
+              </Tr>
+            </Thead>
+            <Tbody>{buildrows(completedJobs)}</Tbody>
+          </Table>
+        </Tab>
 
-        {props.role == "admin" && 
-        
+        {props.role === "admin" &&
+
           <Tab eventKey="adminOnly" title="Admin Only">
             <h2>For Admins Only</h2>
             <Button variant="info" href="https://docs.google.com/spreadsheets/d/1Xxx_pVpF_1i3KNPnpoy1MM4oN5x-L9kaj3QaTbF0lQo/edit?usp=sharing" target="_blank">
               Price Estimation
-              </Button>
+            </Button>
           </Tab>
-        
+
         }
 
         <Tab eventKey="add" title="New Quote">
-        <Add
-          client={props.client}
-          refreshList={() => {
-            refreshList();
-            cCurrent(undefined);
-          }}
-          currentQuote={current}
-        />
+          <Add
+            client={props.client}
+            refreshList={() => {
+              refreshList();
+              cCurrent(undefined);
+            }}
+            currentQuote={current}
+          />
         </Tab>
       </Tabs>
     </>
