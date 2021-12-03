@@ -33,7 +33,7 @@ function Dashboard(props) {
     refreshList();
   }, []);
 
-  const inProgressJobs = quotes.filter(q => q.started && q.completed == undefined);
+  const inProgressJobs = quotes.filter(q => q.started && q.completed === undefined);
   const completedJobs = quotes.filter(q => q.started && q.completed);
 
   const buildrows = (jobs) => {

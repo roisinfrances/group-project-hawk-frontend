@@ -74,6 +74,8 @@ export class ApiClient {
     });
   }
 
+// start job function // adds date 
+
   startJob(id) {
     return this.authenticatedCall("put", `${url}${id}`,{
       started: new Date().toISOString()
