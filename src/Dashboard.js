@@ -45,8 +45,8 @@ function Dashboard(props) {
           <Td>{current.jobDescription}</Td>
           <Td>{current.productsRequired}</Td>
           <Td>£{current.cost}</Td>
-          <Td>{current.started}</Td>
-          <Td>{current.completed}</Td>
+          <Td>{moment(current.started).format("MMMM Do YYYY, h:mm a")}</Td>
+          <Td>{moment(current.completed).format("MMMM Do YYYY, h:mm a")}</Td>
 
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
           <Td>{moment(current.date).format("MMMM Do YYYY, h:mm a")}</Td>
