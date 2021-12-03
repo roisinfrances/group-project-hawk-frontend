@@ -45,11 +45,10 @@ function Dashboard(props) {
           <Td>{current.jobDescription}</Td>
           <Td>{current.productsRequired}</Td>
           <Td>£{current.cost}</Td>
-          <Td>{moment(current.started).format("MMMM Do YYYY, h:mm a")}</Td>
-          <Td>{moment(current.completed).format("MMMM Do YYYY, h:mm a")}</Td>
-
+          <Td>{current.started}</Td>
+          <Td>{current.completed}</Td>
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
-          <Td>{moment(current.date).format("MMMM Do YYYY, h:mm a")}</Td>
+          <Td>{moment(current.date).format("MMMM Do YYYY")}</Td>
           <Td>
             <Button
               className="mx-1"
@@ -115,7 +114,6 @@ function Dashboard(props) {
                 <Th>Cost</Th>
                 <Th>Started</Th>
                 <Th>Completed</Th>
-                <Th>Date</Th>
               </Tr>
             </Thead>
             <Tbody>{buildrows(inProgressJobs)}</Tbody>
@@ -132,23 +130,13 @@ function Dashboard(props) {
                 <Th>Cost</Th>
                 <Th>Started</Th>
                 <Th>Completed</Th>
-                <Th>Date</Th>
               </Tr>
             </Thead>
             <Tbody>{buildrows(completedJobs)}</Tbody>
           </Table>
         </Tab>
 
-        {props.role === "admin" &&
 
-          <Tab eventKey="adminOnly" title="Admin Only">
-            <h2>For Admins Only</h2>
-            <Button variant="info" href="https://docs.google.com/spreadsheets/d/1Xxx_pVpF_1i3KNPnpoy1MM4oN5x-L9kaj3QaTbF0lQo/edit?usp=sharing" target="_blank">
-              Price Estimation
-            </Button>
-          </Tab>
-
-        }
 
         <Tab eventKey="add" title="New Quote">
           <Add
@@ -160,6 +148,19 @@ function Dashboard(props) {
             currentQuote={current}
           />
         </Tab>
+
+        {props.role === "admin" &&
+
+          <Tab eventKey="adminOnly" title="Admin Only">
+            <h2>Admin Only</h2>
+            <p />
+
+            <Button variant="info" href="https://docs.google.com/spreadsheets/d/1Xxx_pVpF_1i3KNPnpoy1MM4oN5x-L9kaj3QaTbF0lQo/edit?usp=sharing" target="_blank">
+              Price Estimation
+            </Button>
+          </Tab>
+
+        }
       </Tabs>
     </>
   );

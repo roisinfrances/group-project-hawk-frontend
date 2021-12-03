@@ -6,7 +6,7 @@ function Header(props) {
     return (
         <Navbar variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Hawk Services</Navbar.Brand>
+                <Navbar.Brand href="#home"><h1>Hawk Services</h1> </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>

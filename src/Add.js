@@ -88,17 +88,20 @@ function Add(props) {
   ];
 
   const options3 = [
-    { label: "Brush", value: "Brush " },
     { label: "Interior paint", value: "Interior paint " },
     { label: "Exterior paint", value: "Exterior paint " },
-    { label: "Paint Roller", value: "Paint Roller " },
     { label: "Plaster", value: "Plaster " },
     { label: "Wood", value: "Wood " },
     { label: "Paint thinner", value: "Paint thinner " },
     { label: "Filler", value: "Filler " },
     { label: "Varnish", value: "Varnish " },
+    { label: "Tiles", value: "Tiles " },
+    { label: "Grout", value: "Grout " },
+    { label: "Adhesive", value: "Adhesive " },
     { label: "Wallpaper", value: "Wallpaper  " },
     { label: "Wallpaper paste", value: "Wallpaper paste " },
+    { label: "Paint Roller", value: "Paint Roller " },
+    { label: "Brush", value: "Brush " }
 
 
 
@@ -188,7 +191,7 @@ function Add(props) {
             <Form.Group controlId="date">
               <Form.Label>Date and time</Form.Label>
               <Form.Control
-                type="datetime-local"
+                type="date"
                 defaultValue={props.currentQuote?.date}
                 disabled={disabled}
                 required
