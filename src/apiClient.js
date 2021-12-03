@@ -74,7 +74,7 @@ export class ApiClient {
     });
   }
 
-// start job function // adds date 
+// start job function // adds date // format date
 
   startJob(id) {
     return this.authenticatedCall("put", `${url}${id}`,{
